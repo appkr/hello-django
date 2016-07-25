@@ -4,17 +4,17 @@ from django.db import models
 
 
 class Question(models.Model):
-    question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+    text = models.CharField(max_length=200)
+    created_at = models.DateTimeField('date published')
 
     def __unicode__(self):
-        return self.question_text
+        return self.text
 
 
-class Choice(models.Model):
+class Alternative(models.Model):
     question = models.ForeignKey(Question)
-    choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0)
+    text = models.CharField(max_length=200)
+    vote_count = models.IntegerField(default=0)
 
     def __unicode__(self):
-        return self.choice_text
+        return self.text
